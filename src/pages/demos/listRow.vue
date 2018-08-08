@@ -8,7 +8,7 @@
     <ListRow title="标题">
       <i slot="icon" class="more iconfont icon-user"></i>
       <section slot="detail">
-        <input type="file" />
+        <input type="text" placeholder="请输入"/>
       </section>
     </ListRow>
   </Page>
@@ -36,4 +36,16 @@ export default {
 </script>
 
 <style scoped lang="less">
+input {
+  border: 0px solid #e5e5e5;
+  border-bottom-width: 1px;
+  line-height: 30px;
+  padding: 0px 10px;
+  text-align: right;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 </style>

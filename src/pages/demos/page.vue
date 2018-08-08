@@ -39,7 +39,7 @@ export default {
   padding: 10px;
   .backBtn {
     position: absolute;
-    left: 0;
+    left: 10px;
     top: 10px;
   }
   h2 {

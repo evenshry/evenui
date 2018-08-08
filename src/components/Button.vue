@@ -58,13 +58,8 @@ export default {
 <style scoped lang="less">
 .button {
   display: inline-block;
-  margin-bottom: 0;
-  font-weight: 400;
   text-align: center;
-  cursor: pointer;
-  background-image: none;
   border: 1px solid transparent;
-  white-space: nowrap;
   padding: 0px 10px;
   font-size: 14px;
   line-height: 28px;
@@ -132,7 +127,7 @@ export default {
   &.ghost {
     background-color: transparent;
     border-color: transparent;
-    padding: 0px 10px;
+    padding: 0px 5px;
     &.primary { color: #2d8cf0; }
     &.info { color: #2db7f5; }
     &.success { color: #19be6b; }
