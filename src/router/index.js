@@ -5,6 +5,7 @@ import Index from '@/pages/index'
 import DemoModal from '@/pages/demos/modal'
 import DemoListRow from '@/pages/demos/listRow'
 import DemoButton from '@/pages/demos/button'
+import DemoTabs from '@/pages/demos/tabs'
 
 Vue.use(Router)
 
@@ -24,5 +25,8 @@ export default new Router({
   }, {
     path: '/demo/button',
     component: DemoButton
+  }, {
+    path: '/demo/tabs',
+    component: DemoTabs
   }]
 })

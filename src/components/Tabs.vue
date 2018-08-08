@@ -5,8 +5,8 @@
       :style="{
         width: tabStyle.width === 'auto' ? 'auto' : tabStyle.width + 'px',
         backgroundColor: backgroundColor,
-        height: height + 'rpx',
-        lineHeight: height + 'rpx'
+        height: height + 'px',
+        lineHeight: height + 'px'
       }"
     >
       <section
@@ -15,22 +15,28 @@
         :class="['item', index === current ? 'active' : '']"
         :style="{
           flex: itemStyle.flex,
-          width: itemStyle.width === 'auto' ? 'auto' : itemStyle.width + 'px'
+          width: itemStyle.width === 'auto' ? 'auto' : itemStyle.width + 'px',
+          color: index === current ? color : '#333'
         }"
         @click="handleChange(index)"
       >{{item}}</section>
-      <section class="indicator" :style="{ left: offsetLeft + 'px' }"></section>
+      <section
+        class="indicator"
+        :style="{
+          left: offsetLeft + 'px',
+          backgroundColor: color,
+        }"
+      ></section>
     </section>
   </section>
 </template>
 
 <script>
-const wWidth = document.documentElement.clientWidth
 
 export default {
   props: {
     // 当前选项索引
-    current: {
+    initValue: {
       type: Number,
       default: 0
     },
@@ -41,11 +47,15 @@ export default {
     },
     height: {
       type: Number,
-      default: 92
+      default: 40
+    },
+    color: {
+      type: String,
+      default: '#FF921C'
     },
     backgroundColor: {
       type: String,
-      default: '#F9F9F9'
+      default: '#fff'
     },
     data: {
       type: Array,
@@ -57,7 +67,8 @@ export default {
 
   data () {
     return {
-      current: 0,
+      pWidth: 0,
+      current: this.initValue,
       offsetLeft: 0,
       tabStyle: {
         width: 'auto'
@@ -69,28 +80,32 @@ export default {
     }
   },
 
-  created () {
-    if (this.itemWidth > 0) {
-      this.itemStyle.flex = 'none'
-      this.itemStyle.width = this.itemWidth
-      const tWidth = this.itemWidth * this.data.length
-      this.tabStyle.width = tWidth > wWidth ? tWidth : wWidth
-      const itemWidth = this.itemWidth
-      this.offsetLeft = itemWidth * (this.current + (1 / 2))
-    } else {
-      this.itemStyle.flex = 1
-      this.tabStyle.width = 'auto'
-      const itemWidth = wWidth / this.data.length
-      this.offsetLeft = itemWidth * (this.current + (1 / 2))
-    }
+  mounted () {
+    this.pWidth = this.$el.clientWidth
+    this.ininStyle()
   },
 
   methods: {
+    ininStyle () {
+      if (this.itemWidth > 0) {
+        this.itemStyle.flex = 'none'
+        this.itemStyle.width = this.itemWidth
+        const tWidth = this.itemWidth * this.data.length
+        this.tabStyle.width = tWidth > this.pWidth ? tWidth : this.pWidth
+        const itemWidth = this.itemWidth
+        this.offsetLeft = itemWidth * (this.current + (1 / 2))
+      } else {
+        this.itemStyle.flex = 1
+        this.tabStyle.width = 'auto'
+        const itemWidth = this.pWidth / this.data.length
+        this.offsetLeft = itemWidth * (this.current + (1 / 2))
+      }
+    },
     handleChange (index) {
       if (index !== this.current) {
         const itemWidth = this.itemWidth > 0
           ? this.itemWidth
-          : wWidth / this.data.length
+          : this.pWidth / this.data.length
         this.offsetLeft = itemWidth * (index + (1 / 2))
         this.current = index
         this.$emit('change', index)
@@ -105,9 +120,9 @@ export default {
   overflow-x: auto;
 }
 .tabContainer {
-  height: 92rpx;
-  line-height: 92rpx;
-  background-color: #F9F9F9;
+  height: 40px;
+  line-height: 40px;
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -116,7 +131,7 @@ export default {
     flex: 1;
     height: 100%;
     text-align: center;
-    font-size: 30rpx;
+    font-size: 14px;
     color: #333;
     transition: all .2s;
     &.active {
@@ -125,12 +140,12 @@ export default {
   }
   .indicator {
     position: absolute;
-    width: 48rpx;
-    height: 6rpx;
-    bottom: 0rpx;
-    left: 0rpx;
-    margin-left: -24rpx;
-    border-radius: 3rpx;
+    width: 24px;
+    height: 4px;
+    bottom: 0px;
+    left: 0px;
+    margin-left: -12px;
+    border-radius: 2px;
     background: #FF921C;
     transition: all .2s;
   }

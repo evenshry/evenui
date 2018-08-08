@@ -4,6 +4,7 @@
     <ListRow title="按钮" link @onLink="handleLink('/demo/button')" />
     <ListRow title="列表项" link @onLink="handleLink('/demo/listRow')" />
     <ListRow title="模态框" link @onLink="handleLink('/demo/modal')" />
+    <ListRow title="标签切换" link @onLink="handleLink('/demo/tabs')" />
   </section>
 </template>
 

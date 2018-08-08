@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <h3>{{title}}</h3>
+    <h2>{{title}}</h2>
     <section class="backBtn">
       <Button icon="icon-left" size="large" ghost @press="handleBackBtn"/>
     </section>
@@ -42,7 +42,7 @@ export default {
     left: 0;
     top: 10px;
   }
-  h3 {
+  h2 {
     text-align: center;
     line-height: 36px;
     font-weight: normal;
