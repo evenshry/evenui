@@ -34,19 +34,6 @@ export default {
     }
   },
 
-  computed: {
-  },
-
-  data () {
-    return {
-
-    }
-  },
-
-  created () {
-
-  },
-
   methods: {
     handleClick () {
       this.$emit('press')

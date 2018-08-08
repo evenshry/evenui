@@ -30,15 +30,6 @@ export default {
     }
   },
 
-  data () {
-    return {
-
-    }
-  },
-
-  created () {
-  },
-
   methods: {
     handleClick () {
       if (this.link) {
