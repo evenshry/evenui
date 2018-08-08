@@ -1,26 +1,24 @@
 <template>
   <section class="container">
-    <button type="button" name="button" @click="handleModalClose(true)">弹窗</button>
-    <Modal :visible="modalVisible" @close="handleModalClose(false)"/>
+    <ListRow title="模态框" link @onLink="handleLink('/demo/modal')" />
   </section>
 </template>
 
 <script>
-import Modal from '@/components/Modal'
+import ListRow from '@/components/ListRow'
 export default {
   components: {
-    Modal
+    ListRow
   },
 
   data () {
     return {
-      modalVisible: false
     }
   },
 
   methods: {
-    handleModalClose (visible) {
-      this.modalVisible = visible
+    handleLink (path) {
+      this.$router.push(path)
     }
   }
 }
