@@ -1,33 +1,44 @@
 <template>
   <Page title="模态窗">
-    <ListRow title="基本用法" link @onLink="handleModalClose(true)"/>
-    <Modal :visible="modalVisible" @close="handleModalClose(false)"/>
+    <ListRow title="基本用法" link @onLink="handleModal(0, true)"/>
+    <ListRow title="无标题栏" link @onLink="handleModal(1, true)"/>
+    <Modal title="基本用法" :visible="modal[0]" @close="handleModal(0, false)">
+      <h1>基本用法的测试内容</h1>
+    </Modal>
+    <Modal :header="false" :visible="modal[1]" @close="handleModal(1, false)">
+      <h1>无标题栏的测试内容</h1>
+    </Modal>
   </Page>
 </template>
 
 <script>
 import Page from './page'
-import Button from '@/components/Button'
+import ListRow from '@/components/ListRow'
 import Modal from '@/components/Modal'
 
 export default {
   components: {
-    Page, Button, Modal
+    Page, ListRow, Modal
   },
 
   data () {
     return {
-      modalVisible: false
+      modal: [false, false]
     }
   },
 
   methods: {
-    handleModalClose (visible) {
-      this.modalVisible = visible
+    handleModal (index, visible) {
+      this.$set(this.modal, index, visible)
     }
   }
 }
 </script>
 
 <style scoped lang="less">
+h1 {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 40px;
+}
 </style>

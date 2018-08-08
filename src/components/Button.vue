@@ -1,14 +1,11 @@
 <template>
-  <a
+  <section
     :class="['button', type, size, disabled ? 'disabled' : '', ghost ? 'ghost' : '']"
     @click="handleClick"
   >
-    <i
-      v-if="icon"
-      :class="['iconfont', icon]"
-    ></i>
+    <i v-if="icon" :class="['iconfont', icon]"></i>
     <slot></slot>
-  </a>
+  </section>
 </template>
 
 <script>
@@ -64,16 +61,10 @@ export default {
   margin-bottom: 0;
   font-weight: 400;
   text-align: center;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   padding: 0px 10px;
   font-size: 14px;
   line-height: 28px;

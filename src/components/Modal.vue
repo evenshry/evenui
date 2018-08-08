@@ -2,7 +2,7 @@
   <section>
     <section :class="['modal-mask', visible ? 'modal-mask-show' : '']" @click="handleClickMask"></section>
     <section :class="['modal', visible ? 'modal-show' : '']">
-      <section class="modal-header">
+      <section v-if="header" class="modal-header">
         <span class="title">{{title}}</span>
         <i class="close iconfont icon-close-circle" @click="handleClickMask"></i>
       </section>
@@ -19,6 +19,10 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    header: {
+      type: Boolean,
+      default: true
     },
     title: {
       type: String,
@@ -123,7 +127,7 @@ export default {
   }
   .modal-body {
     font-size: 12px;
-    padding: 20px;
+    padding: 10px;
   }
 
 }

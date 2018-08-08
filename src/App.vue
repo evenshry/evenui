@@ -1,5 +1,13 @@
 <template>
-  <router-view/>
+  <section class="appContianer">
+    <transition
+      mode="out-in"
+      enter-active-class="animate slideUp"
+      leave-active-class="animate fadeOut"
+    >
+      <router-view/>
+    </transition>
+  </section>
 </template>
 
 <script>
@@ -10,5 +18,8 @@ export default {}
 * {
   margin: 0;
   padding: 0;
+}
+.appContianer {
+
 }
 </style>
