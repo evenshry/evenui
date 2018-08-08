@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 import Index from '@/pages/index'
 import DemoModal from '@/pages/demos/modal'
+import DemoListRow from '@/pages/demos/listRow'
+import DemoButton from '@/pages/demos/button'
 
 Vue.use(Router)
 
@@ -16,5 +18,11 @@ export default new Router({
   }, {
     path: '/demo/modal',
     component: DemoModal
+  }, {
+    path: '/demo/listRow',
+    component: DemoListRow
+  }, {
+    path: '/demo/button',
+    component: DemoButton
   }]
 })

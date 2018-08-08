@@ -6,7 +6,7 @@
     </section>
     <section class="right">
       <slot name="detail">
-        <span class="detail"></span>
+        <span class="detail">{{detail}}</span>
       </slot>
       <i v-if="link" class="more iconfont icon-right"></i>
     </section>
@@ -18,11 +18,15 @@ export default {
   props: {
     link: {
       type: Boolean,
-      default: true
+      default: false
     },
     title: {
       type: String,
       default: '标题'
+    },
+    detail: {
+      type: String,
+      default: ''
     }
   },
 
@@ -72,12 +76,13 @@ export default {
     color: #333;
   }
   .right {
-    flex: 1;
     text-align: right;
-    color: #666;
+    font-size: 14px;
+    .detail {
+      color: #666;
+    }
     .more {
       color: #999;
-      font-size: 14px;
     }
   }
 }

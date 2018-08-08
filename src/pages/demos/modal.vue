@@ -1,15 +1,18 @@
 <template>
-  <section class="container">
-    <button type="button" name="button" @click="handleModalClose(true)">弹窗</button>
+  <Page title="模态窗">
+    <ListRow title="基本用法" link @onLink="handleModalClose(true)"/>
     <Modal :visible="modalVisible" @close="handleModalClose(false)"/>
-  </section>
+  </Page>
 </template>
 
 <script>
+import Page from './page'
+import Button from '@/components/Button'
 import Modal from '@/components/Modal'
+
 export default {
   components: {
-    Modal
+    Page, Button, Modal
   },
 
   data () {
@@ -27,5 +30,4 @@ export default {
 </script>
 
 <style scoped lang="less">
-
 </style>

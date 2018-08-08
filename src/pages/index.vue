@@ -1,5 +1,7 @@
 <template>
   <section class="container">
+    <ListRow title="按钮" link @onLink="handleLink('/demo/button')" />
+    <ListRow title="列表项" link @onLink="handleLink('/demo/listRow')" />
     <ListRow title="模态框" link @onLink="handleLink('/demo/modal')" />
   </section>
 </template>
