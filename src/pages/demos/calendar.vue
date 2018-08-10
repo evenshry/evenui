@@ -1,8 +1,10 @@
 <template>
-  <Page title="标签切换">
+  <Page title="日历选择">
     <section class="row">
-      <h3>平均选项</h3>
+      <h3>左右滑动切换月</h3>
       <Calendar :value="currentDate"/>
+      <h3>上下滑动切换月</h3>
+      <Calendar :value="currentDate" direction="vertical"/>
     </section>
   </Page>
 </template>

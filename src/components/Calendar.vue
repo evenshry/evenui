@@ -2,11 +2,11 @@
   <section class="ui-calendar">
     <section class="calendar-header">
       <section class="left">
-        <i class="iconfont icon-left" @change="handlerMonthPrev"></i>
+        <i class="iconfont icon-left" @click="handlerMonthPrev"></i>
       </section>
       <section class="title">{{dateYear}} 年 {{dateMonth}} 月</section>
       <section class="right">
-        <i class="iconfont icon-right" @change="handlerMonthNext"></i>
+        <i class="iconfont icon-right" @click="handlerMonthNext"></i>
       </section>
     </section>
     <section class="calendar-title">
@@ -19,7 +19,8 @@
       </section>
     </section>
     <swiper
-      :options="{ initialSlide: monthSwiperIndex }"
+      :options="{ initialSlide: monthSwiperIndex, direction }"
+      ref="mySwiper"
       class="calendar-wrap"
       current="monthSwiperIndex"
       @change="changeHandler"
@@ -78,6 +79,10 @@ export default {
     datePage: {
       type: [String, Number],
       default: 1
+    },
+    direction: {
+      type: String,
+      default: 'horizontal'
     },
     selectRangeMode: { // 是否时间段选择
       type: Boolean,
@@ -284,12 +289,30 @@ export default {
 
     // 上一月
     handlerMonthPrev () {
-
+      this.$refs.mySwiper.swiper.slidePrev()
+      let index = this.monthSwiperIndex
+      index--
+      if (index < 0) {
+        index = 0
+      }
+      const item = this.monthsArray[index]
+      this.monthSwiperIndex = index
+      this.dateYear = item.year
+      this.dateMonth = item.month
     },
 
     // 下一月
     handlerMonthNext () {
-
+      this.$refs.mySwiper.swiper.slideNext()
+      let index = this.monthSwiperIndex
+      index++
+      if (index > this.monthsArray.length - 1) {
+        index = this.monthsArray.length - 1
+      }
+      const item = this.monthsArray[index]
+      this.monthSwiperIndex = index
+      this.dateYear = item.year
+      this.dateMonth = item.month
     },
 
     // 选择日期范围
@@ -479,7 +502,7 @@ export default {
         obj.isInRange = false
         obj.monthIndex = monthIndex
         obj.dayIndex = count
-        obj.value = `${obj.year}/${obj.month < 10 ? '0' : ''}${obj.month}/${obj.day < 10 ? '0' : ''}${obj.day}`
+        obj.value = `${obj.year}-${obj.month < 10 ? '0' : ''}${obj.month}-${obj.day < 10 ? '0' : ''}${obj.day}`
         if ([0, 6].indexOf((moment(obj.value).weekday())) !== -1) {
           obj.isHoliday = true
         }
@@ -489,7 +512,7 @@ export default {
       }
       monthArray.positionY = this.heightCount
 
-      monthArray.value = `${date.year}/${date.month > 10 ? '' : '0'}${date.month}`
+      monthArray.value = `${date.year}-${date.month > 10 ? '' : '0'}${date.month}`
 
       if (lineCount === 0) {
         monthArray.monthHeight = 350
@@ -567,7 +590,7 @@ export default {
         border-radius: 16px;
       }
       .not-this-month {
-        color: gray;
+        color: #aaa;
       }
       .is-this-month {
         color: black
@@ -596,10 +619,10 @@ export default {
         color: white;
       }
       .is-past-days {
-        color: gray;
+        color: #aaa;
       }
       .is-fore-days {
-        color: gray;
+        color: #aaa;
       }
     }
   }
