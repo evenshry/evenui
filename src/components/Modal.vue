@@ -1,10 +1,10 @@
 <template>
   <section class="ui-modal">
-    <section :class="['modal-mask', visible ? 'modal-mask-show' : '']" @click="handleClickMask"></section>
+    <section :class="['modal-mask', visible ? 'modal-mask-show' : '']" @click="handleClose"></section>
     <section :class="['modal', visible ? 'modal-show' : '']">
       <section v-if="header" class="modal-header">
         <span class="title">{{title}}</span>
-        <i class="close iconfont icon-close-circle" @click="handleClickMask"></i>
+        <i class="close iconfont icon-close-circle" @click="handleClose"></i>
       </section>
       <section class="modal-body">
         <slot>这里是内容</slot>
@@ -31,11 +31,7 @@ export default {
   },
 
   methods: {
-    handleClickMask () {
-      this.handleClickCancel()
-    },
-
-    handleClickCancel () {
+    handleClose () {
       this.$emit('close')
     }
   }
@@ -85,6 +81,19 @@ export default {
       background: #fff;
       text-align: center;
       position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        transform: scale(.5);
+        transform-origin: 0 0;
+        pointer-events: none;
+        box-sizing: border-box;
+        border-bottom: 1px solid #e9eaec;
+      }
       .title {
         font-size: 14px;
         line-height: 40px;
@@ -99,19 +108,7 @@ export default {
         margin: 10px;
       }
     }
-    .modal-header::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      transform: scale(.5);
-      transform-origin: 0 0;
-      pointer-events: none;
-      box-sizing: border-box;
-      border-bottom: 1px solid #e9eaec;
-    }
+
     .modal-body {
       font-size: 12px;
       padding: 10px;

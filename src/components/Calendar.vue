@@ -67,6 +67,14 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import Dater from '@/utils/date.js'
 import moment from 'moment'
 
+const fixO = (value, length = 2) => {
+  let temp = value.toString()
+  while (temp.length < length) {
+    temp = `0${temp}`
+  }
+  return temp
+}
+
 export default {
   components: {
     swiper,
@@ -191,7 +199,6 @@ export default {
   methods: {
 
     ininData () {
-      //
       this.monthsArray.splice(0, this.monthsArray.length)
       let startMonthAnchor
       let endMonthAnchor
@@ -252,9 +259,9 @@ export default {
 
     itemTransToMoment (item) {
       if (item.day) {
-        return moment(`${item.year}-${item.month}-${item.day}`)
+        return moment(`${item.year}-${fixO(item.month)}-${fixO(item.day)}`)
       } else {
-        return moment(`${item.year}-${item.month}`)
+        return moment(`${item.year}-${fixO(item.month)}`)
       }
     },
 
@@ -377,7 +384,6 @@ export default {
     // 日期单选
     selectSingle (mIndex, dIndex) {
       let selectItem = this.monthsArray[mIndex].data[dIndex]
-
       if (selectItem.isPastDay && this.disablePastDays) {
         this.$emit('failed')
         return
@@ -390,14 +396,11 @@ export default {
         this.$emit('failed')
         return
       }
-
       if (this.oldItem) {
         this.oldItem.isClicked = false
       }
       this.monthsArray[mIndex].data[dIndex].isClicked = true
-
       this.oldItem = this.monthsArray[mIndex].data[dIndex]
-
       this.selectItem = this.oldItem
       this.monthSwiperIndex = mIndex
       this.myItem = this.selectItem
@@ -435,8 +438,7 @@ export default {
           obj.month = date.month - 1
           obj.year = date.year
         }
-        obj.value = `${obj.year}-${obj.month < 10 ? '0' : ''}${obj.month}-${obj.day < 10 ? '0' : ''}${obj.day}`
-
+        obj.value = `${obj.year}-${fixO(obj.month)}-${fixO(obj.day)}`
         obj.isThisMonth = false
         obj.isClicked = false
         obj.isRangeLeft = false
@@ -463,15 +465,15 @@ export default {
         obj.isInRange = false
         obj.monthIndex = monthIndex
         obj.dayIndex = count
-        obj.value = `${obj.year}-${obj.month < 10 ? '0' : ''}${obj.month}-${obj.day < 10 ? '0' : ''}${obj.day}`
+        obj.value = `${obj.year}-${fixO(obj.month)}-${fixO(obj.day)}`
         if ([0, 6].indexOf((moment(obj.value).weekday())) !== -1) {
           obj.isHoliday = true
         }
-        if (moment(`${obj.year}-${obj.month}-${obj.day}`).isBefore(moment(), 'day')) {
+        if (moment(obj.value).isBefore(moment(), 'day')) {
           obj.isPastDay = true
           obj.isForeDay = true
           obj.isToday = false
-        } else if (moment(`${obj.year}-${obj.month}-${obj.day}`).isAfter(moment(), 'day')) {
+        } else if (moment(obj.value).isAfter(moment(), 'day')) {
           obj.isPastDay = false
           obj.isForeDay = true
           obj.isToday = false
@@ -502,7 +504,7 @@ export default {
         obj.isInRange = false
         obj.monthIndex = monthIndex
         obj.dayIndex = count
-        obj.value = `${obj.year}-${obj.month < 10 ? '0' : ''}${obj.month}-${obj.day < 10 ? '0' : ''}${obj.day}`
+        obj.value = `${obj.year}-${fixO(obj.month)}-${fixO(obj.day)}`
         if ([0, 6].indexOf((moment(obj.value).weekday())) !== -1) {
           obj.isHoliday = true
         }
@@ -511,9 +513,7 @@ export default {
         this.dayMap[obj.value] = obj
       }
       monthArray.positionY = this.heightCount
-
-      monthArray.value = `${date.year}-${date.month > 10 ? '' : '0'}${date.month}`
-
+      monthArray.value = `${date.year}-${fixO(date.month)}`
       if (lineCount === 0) {
         monthArray.monthHeight = 350
       } else if (lineCount === 1) {
