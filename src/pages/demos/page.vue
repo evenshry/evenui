@@ -22,10 +22,6 @@ export default {
     Button
   },
 
-  data () {
-    return { }
-  },
-
   methods: {
     handleBackBtn () {
       this.$router.go(-1)

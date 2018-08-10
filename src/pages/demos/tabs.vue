@@ -22,18 +22,6 @@ import Tabs from '@/components/Tabs'
 export default {
   components: {
     Page, Tabs
-  },
-
-  data () {
-    return {
-      modal: [false, false]
-    }
-  },
-
-  methods: {
-    handleModal (index, visible) {
-      this.$set(this.modal, index, visible)
-    }
   }
 }
 </script>

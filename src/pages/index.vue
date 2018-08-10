@@ -5,6 +5,8 @@
     <ListRow title="列表项" link @onLink="handleLink('/demo/listRow')" />
     <ListRow title="模态框" link @onLink="handleLink('/demo/modal')" />
     <ListRow title="标签切换" link @onLink="handleLink('/demo/tabs')" />
+    <ListRow title="抽屉" link @onLink="handleLink('/demo/accordion')" />
+    <ListRow title="日历" link @onLink="handleLink('/demo/calendar')" />
   </section>
 </template>
 

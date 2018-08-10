@@ -6,6 +6,8 @@ import DemoModal from '@/pages/demos/modal'
 import DemoListRow from '@/pages/demos/listRow'
 import DemoButton from '@/pages/demos/button'
 import DemoTabs from '@/pages/demos/tabs'
+import DemoAccordion from '@/pages/demos/accordion'
+import DemoCalendar from '@/pages/demos/calendar'
 
 Vue.use(Router)
 
@@ -28,5 +30,11 @@ export default new Router({
   }, {
     path: '/demo/tabs',
     component: DemoTabs
+  }, {
+    path: '/demo/accordion',
+    component: DemoAccordion
+  }, {
+    path: '/demo/calendar',
+    component: DemoCalendar
   }]
 })
