@@ -39,7 +39,7 @@
 
 <script>
 import Page from './page'
-import Button from '@/components/Button'
+import { Button } from '@/components'
 
 export default {
   components: {

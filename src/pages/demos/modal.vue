@@ -13,8 +13,7 @@
 
 <script>
 import Page from './page'
-import ListRow from '@/components/ListRow'
-import Modal from '@/components/Modal'
+import { Modal, ListRow } from '@/components'
 
 export default {
   components: {

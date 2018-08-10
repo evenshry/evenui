@@ -11,7 +11,7 @@
 
 <script>
 import Page from './page'
-import Calendar from '@/components/Calendar'
+import { Calendar } from '@/components'
 import moment from 'moment'
 
 export default {

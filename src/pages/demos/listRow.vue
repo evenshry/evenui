@@ -11,13 +11,18 @@
         <input type="text" placeholder="请输入"/>
       </section>
     </ListRow>
+    <ListRow title="标题">
+      <i slot="icon" class="more iconfont icon-user"></i>
+      <section slot="detail">
+        <Button type="primary">详情</Button>
+      </section>
+    </ListRow>
   </Page>
 </template>
 
 <script>
 import Page from './page'
-import Button from '@/components/Button'
-import ListRow from '@/components/ListRow'
+import { Button, ListRow } from '@/components'
 
 export default {
   components: {

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ListRow from '@/components/ListRow'
+import { ListRow } from '@/components'
 export default {
   components: {
     ListRow

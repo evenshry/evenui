@@ -31,8 +31,7 @@
 
 <script>
 import Page from './page'
-import Accordion from '@/components/Accordion'
-import AccordionItem from '@/components/AccordionItem'
+import { Accordion, AccordionItem } from '@/components'
 
 export default {
   components: {

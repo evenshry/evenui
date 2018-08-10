@@ -17,7 +17,7 @@
 
 <script>
 import Page from './page'
-import Tabs from '@/components/Tabs'
+import { Tabs } from '@/components'
 
 export default {
   components: {
