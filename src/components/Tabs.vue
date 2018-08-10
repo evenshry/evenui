@@ -1,5 +1,5 @@
 <template>
-  <section class="scrollContainer">
+  <section class="ui-tabs">
     <section
       class="tabContainer"
       :style="{
@@ -115,39 +115,39 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-.scrollContainer {
+<style lang="less">
+.ui-tabs {
   overflow-x: auto;
-}
-.tabContainer {
-  height: 40px;
-  line-height: 40px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  .item {
-    flex: 1;
-    height: 100%;
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    transition: all .2s;
-    &.active {
-      color: #FF921C;
+  .tabContainer {
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    .item {
+      flex: 1;
+      height: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      transition: all .2s;
+      &.active {
+        color: #FF921C;
+      }
     }
-  }
-  .indicator {
-    position: absolute;
-    width: 24px;
-    height: 4px;
-    bottom: 0px;
-    left: 0px;
-    margin-left: -12px;
-    border-radius: 2px;
-    background: #FF921C;
-    transition: all .2s;
+    .indicator {
+      position: absolute;
+      width: 24px;
+      height: 4px;
+      bottom: 0px;
+      left: 0px;
+      margin-left: -12px;
+      border-radius: 2px;
+      background: #FF921C;
+      transition: all .2s;
+    }
   }
 }
 </style>

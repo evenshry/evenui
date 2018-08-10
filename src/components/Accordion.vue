@@ -1,47 +1,35 @@
 <template>
   <section class="ui-accordion">
-    <section
-    class="header"
-    @click="handleClick"
-    >
-      <section class="arrow">
-        <img class="arrow-image"/>
-      </section>
-      <section class="accordion-header">
-        <slot name="header"></slot>
-      </section>
-    </section>
-    <section class="content" ref="content">
-        <slot name="content"></slot>
-    </section>
+    <slot></slot>
   </section>
 </template>
 
 <script>
 export default {
   props: {
-    headerHeight: {
-      type: Number,
-      default: 50
+    collapsible: {
+      type: Boolean,
+      default: false
     }
+  },
+
+  computed: {
   },
 
   data () {
     return {
-
     }
   },
 
   mounted () {
-
   },
 
   methods: {
-    handleClick () {
-      if (this.selfShow) {
-        this.selfShow = false
-      } else {
-        this.selfShow = true
+    update (_uid) {
+      if (this.collapsible) {
+        for (let i = 0; i < this.$children.length; i++) {
+          this.$children[i].update(_uid)
+        }
       }
     }
   }
@@ -49,38 +37,9 @@ export default {
 
 </script>
 
-<style>
+<style lang="less">
 .ui-accordion {
-  display: relative;
-  width: 100%;
-}
-
-.content {
-  width: 100%;
-  overflow: hidden;
-  transition: all .3s;
-}
-
-.header {
-  width: 100%;
-  min-height: 30px;
-  background-size: 16px;
-  text-align: center;
-  line-height: 30px;
   position: relative;
-  background-color: #e5e5e5;
-}
 
-.arrow {
-  position: absolute;
-  z-index: 9999;
-  right: 8px;
 }
-
-.arrow-image {
-  transition: all .3s;
-  width: 14px;
-  height: 8px;
-}
-
 </style>

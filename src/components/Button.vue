@@ -1,6 +1,6 @@
 <template>
   <section
-    :class="['button', type, size, disabled ? 'disabled' : '', ghost ? 'ghost' : '']"
+    :class="['ui-button', type, size, disabled ? 'disabled' : '', ghost ? 'ghost' : '']"
     @click="handleClick"
   >
     <i v-if="icon" :class="['iconfont', icon]"></i>
@@ -42,8 +42,8 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-.button {
+<style lang="less">
+.ui-button {
   display: inline-block;
   text-align: center;
   border: 1px solid transparent;

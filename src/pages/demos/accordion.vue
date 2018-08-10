@@ -1,24 +1,29 @@
 <template>
-  <Page title="标签切换">
+  <Page title="折叠面板">
     <section class="row">
-      <h3>平均选项</h3>
+      <h3>基本用法</h3>
       <Accordion>
-        <section slot="header">标题</section>
-        <section slot="content">
-          <h3>平均选项</h3>
-        </section>
+        <AccordionItem title="标题1">
+          <h3>这里是折叠面板内容</h3>
+        </AccordionItem>
+        <AccordionItem title="标题2">
+          <h3>这里是折叠面板内容</h3>
+        </AccordionItem>
+        <AccordionItem title="标题3">
+          <h3>这里是折叠面板内容</h3>
+        </AccordionItem>
       </Accordion>
-      <Accordion>
-        <section slot="header">标题</section>
-        <section slot="content">
-          <h3>平均选项</h3>
-        </section>
-      </Accordion>
-      <Accordion>
-        <section slot="header">标题</section>
-        <section slot="content">
-          <h3>平均选项</h3>
-        </section>
+      <h3>只展示一个</h3>
+      <Accordion collapsible>
+        <AccordionItem title="标题1">
+          <h3>这里是折叠面板内容</h3>
+        </AccordionItem>
+        <AccordionItem title="标题2">
+          <h3>这里是折叠面板内容</h3>
+        </AccordionItem>
+        <AccordionItem title="标题3">
+          <h3>这里是折叠面板内容</h3>
+        </AccordionItem>
       </Accordion>
     </section>
   </Page>
@@ -27,22 +32,20 @@
 <script>
 import Page from './page'
 import Accordion from '@/components/Accordion'
+import AccordionItem from '@/components/AccordionItem'
 
 export default {
   components: {
-    Page, Accordion
+    Page, Accordion, AccordionItem
   },
 
   data () {
     return {
-      modal: [false, false]
     }
   },
 
   methods: {
-    handleModal (index, visible) {
-      this.$set(this.modal, index, visible)
-    }
+
   }
 }
 </script>

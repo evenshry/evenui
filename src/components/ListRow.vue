@@ -1,5 +1,5 @@
 <template>
-  <section class="listRow" @click="handleClick">
+  <section class="ui-listRow" @click="handleClick">
     <section class="left">
       <slot name="icon"></slot>
       <span class="title">{{title}}</span>
@@ -40,8 +40,8 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-.listRow {
+<style lang="less">
+.ui-listRow {
   display: flex;
   flex-direction: row;
   align-items: center;
