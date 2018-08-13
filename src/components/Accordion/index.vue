@@ -1,4 +1,4 @@
-
+<template>
   <section class="ui-accordion">
     <slot></slot>
   </section>
